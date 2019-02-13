@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+
+ db:
+   image: postgres:latest
+   environment:
+     POSTGRES_PASSWORD: adminadmin
+     POSTGRES_DB: swtapplication
+
+ payara:
+   image: payaratest
+   ports:
+    - "8080:8080"
+    - "4848:4848"
+    - "8181:8181"
+#   volumes:
+#    - ./deployments:/opt/payara/deployments
