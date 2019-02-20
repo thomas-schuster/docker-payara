@@ -1,11 +1,23 @@
 version: "3.7"
 services:
 
- db:
+ docker:
    image: postgres:latest
+   ports:
+    - "5432:5432"
    environment:
      POSTGRES_PASSWORD: adminadmin
      POSTGRES_DB: swtapplication
+
+ pgadmin:
+    image: dpage/pgadmin4
+    ports:
+     - "80:80"
+    environment:
+     PGADMIN_DEFAULT_EMAIL: user
+     PGADMIN_DEFAULT_PASSWORD: secret
+    volumes:
+     - ./servers.json:/servers.json
 
  payara:
    image: payaratest
