@@ -1,7 +1,7 @@
 version: "3.7"
 services:
 
- docker:
+ db:
    image: postgres:latest
    ports:
     - "5432:5432"
@@ -16,14 +16,14 @@ services:
     environment:
      PGADMIN_DEFAULT_EMAIL: user
      PGADMIN_DEFAULT_PASSWORD: secret
-    volumes:
-     - ./servers.json:/servers.json
-
+    volumes: 
+      - ./servers.json:/pgadmin4/servers.json
+    
  payara:
-   image: payaratest
+   image: payara
    ports:
     - "8080:8080"
     - "4848:4848"
     - "8181:8181"
-#   volumes:
-#    - ./deployments:/opt/payara/deployments
+   volumes:
+    - ./deployments:/opt/payara/deployments
